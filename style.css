@@ -48,9 +48,9 @@ body {
 }
 
 .list-item, .heading-3 {
-  list-style:none;
+  list-style: none;
 }
-.input, .button{
+.input, .button {
   outline:none;
 }
 
@@ -159,5 +159,5 @@ body {
 }
 
 .list .list-item.edit-mode .task {
-  display:none;
+  display: none;
 }
