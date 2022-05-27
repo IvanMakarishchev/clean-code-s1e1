@@ -34,7 +34,7 @@ var createNewTaskElement=function(taskString){
     var deleteButtonImg=document.createElement("img");//delete button image
 
     label.innerText=taskString;
-    label.className='task-section__label';
+    label.className="task-section__label";
 
     //Each elements, needs appending
     checkBox.type="checkbox";
@@ -47,7 +47,8 @@ var createNewTaskElement=function(taskString){
 
     deleteButton.className="task-section__button delete";
     deleteButtonImg.src='./remove.svg';
-    deleteButtonImg.className='task-section__image';
+    deleteButtonImg.className="task-section__image";
+    deleteButtonImg.setAttribute("alt", "delete");
     deleteButton.appendChild(deleteButtonImg);
 
 
@@ -93,7 +94,7 @@ var editTask=function(){
 
         //switch to .editmode
         //label becomes the inputs value.
-        editInput=listItem.querySelector('.task-section__input-text');
+        editInput=listItem.querySelector(".task-section__input-text");
         label=listItem.querySelector(".task-section__label_disabled");
         if (listItem.parentNode.classList.contains("task-section__incomplete")) {
             editInput.className = "task-section__input-text_disabled";
@@ -105,7 +106,7 @@ var editTask=function(){
         label.innerText=editInput.value;
         editBtn.innerText="Edit";
     }else{
-        editInput=listItem.querySelector('.task-section__input-text_disabled');
+        editInput=listItem.querySelector(".task-section__input-text_disabled");
         label=listItem.querySelector(".task-section__label");
         if (listItem.parentNode.classList.contains("task-section__incomplete")) {
             editInput.className = "task-section__input-text";
