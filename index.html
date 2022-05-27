@@ -4,14 +4,14 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
   <link rel="stylesheet" href="style.css"  media="screen" charset="utf-8">
 </head>
-<body>
+<body class="body">
   <header class="header">
     <img src="./eisenhower-matrix.jpg" class="header__image" alt="Eisenhower Matrix">
     <a class="header__info" href="https://goal-life.com/page/method/matrix-eisenhower">Want more details?</a>
   </header>
   <main class="main">
     <article class="main__inner">
-      <section class="task-section new">
+      <section class="task-section task-section__new">
         <h3 class="task-section__heading">Add Item</h3>
         <div class="task-section__inner add">
           <input class="task-section__input-text task-add" type="text">
@@ -21,7 +21,7 @@
       <section class="task-section">
         <h3 class="task-section__heading">Todo</h3>
         <div class="task-section__inner">
-          <ul class="task-section__list incomplete">
+          <ul class="task-section__list task-section__incomplete">
             <li class="task-section__list-item">
               <input type="checkbox" class="task-section__input-checkbox">
               <label class="task-section__label">Pay Bills</label>
@@ -31,7 +31,7 @@
                 <img src="./remove.svg" alt="Delete" class="task-section__image">
               </button>
             </li>
-            <li class="task-section__list-item edit-mode">
+            <li class="task-section__list-item task-section__edit-mode">
               <input type="checkbox" class="task-section__input-checkbox">
               <label class="task-section__label_disabled">Go Shopping</label>
               <input type="text" value="Go Shopping" class="task-section__input-text">
@@ -46,11 +46,11 @@
       <section class="task-section">
         <h3 class="task-section__heading">Completed</h3>
         <div class="task-section__inner">
-          <ul class="task-section__list complete">
+          <ul class="task-section__list task-section__complete">
             <li class="task-section__list-item">
               <input type="checkbox" class="task-section__input-checkbox" checked>
-              <label class="task-section__label completed">See the Doctor</label>
-              <input type="text" class="task-section__input-text_disabled completed">
+              <label class="task-section__label task-section_completed">See the Doctor</label>
+              <input type="text" class="task-section__input-text_disabled task-section_completed">
               <button class="task-section__button edit">Edit</button>
               <button class="task-section__button delete">
                 <img src="./remove.svg" alt="Delete" class="task-section__image">

@@ -1,5 +1,5 @@
 /* Basic Style */
-body {
+.body {
   background-color: #f8f8f8;
   color: #333;
   font-family: Lato, sans-serif;
@@ -56,6 +56,22 @@ body {
   outline: none;
 }
 
+.task-section__button {
+  background: none;
+  border: 0px;
+  color: #888;
+  font-size: 15px;
+  width: 60px;
+  font-family: Lato, sans-serif;
+  flex-shrink: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.task-section__button:hover {
+  color: #3a3a3a;
+}
+
 /* Heading */
 .task-section__heading {
   color: #333;
@@ -89,6 +105,12 @@ body {
 }
 
 /* Task list */
+.task-section__list {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 .task-section__list-item {
   overflow: hidden;
   padding: 20px 0;
@@ -117,7 +139,7 @@ body {
 }
 
 /* Completed */
-.completed {
+.task-section_completed {
   text-decoration: line-through;
   color: #888;
 }
@@ -142,26 +164,4 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
-
-.task-section__list {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-.task-section__button {
-  background: none;
-  border: 0px;
-  color: #888;
-  font-size: 15px;
-  width: 60px;
-  font-family: Lato, sans-serif;
-  flex-shrink: 0;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.task-section__button:hover {
-  color: #3a3a3a;
 }

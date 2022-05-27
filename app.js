@@ -10,8 +10,8 @@
 
 var taskInput=document.querySelector(".task-add");//Add a new task.
 var addButton=document.querySelectorAll(".task-section__button")[0];//first button
-var incompleteTaskHolder=document.querySelector(".incomplete");//ul of #incompleteTasks
-var completedTasksHolder=document.querySelector(".complete");//completed-tasks
+var incompleteTaskHolder=document.querySelector(".task-section__incomplete");//ul of #incompleteTasks
+var completedTasksHolder=document.querySelector(".task-section__complete");//completed-tasks
 
 
 //New task list item
@@ -87,7 +87,7 @@ var editTask=function(){
 
     var editInput, label;
     var editBtn=listItem.querySelector(".edit");
-    var containsClass=listItem.classList.contains("edit-mode");
+    var containsClass=listItem.classList.contains("task-section__edit-mode");
     //If class of the parent is .editmode
     if(containsClass){
 
@@ -95,21 +95,31 @@ var editTask=function(){
         //label becomes the inputs value.
         editInput=listItem.querySelector('.task-section__input-text');
         label=listItem.querySelector(".task-section__label_disabled");
-        editInput.className = "task-section__input-text_disabled";
-        label.className = "task-section__label";
+        if (listItem.parentNode.classList.contains("task-section__incomplete")) {
+            editInput.className = "task-section__input-text_disabled";
+            label.className = "task-section__label";
+        } else {
+            editInput.className = "task-section__input-text_disabled task-section_completed";
+            label.className = "task-section__label task-section_completed";
+        }
         label.innerText=editInput.value;
         editBtn.innerText="Edit";
     }else{
         editInput=listItem.querySelector('.task-section__input-text_disabled');
         label=listItem.querySelector(".task-section__label");
-        editInput.className = "task-section__input-text";
-        label.className = "task-section__label_disabled";
+        if (listItem.parentNode.classList.contains("task-section__incomplete")) {
+            editInput.className = "task-section__input-text";
+            label.className = "task-section__label_disabled";
+        } else {
+            editInput.className = "task-section__input-text task-section_completed";
+            label.className = "task-section__label_disabled task-section_completed";
+        }
         editInput.value=label.innerText;
         editBtn.innerText="Save";
     }
 
     //toggle .editmode on the parent.
-    listItem.classList.toggle("edit-mode");
+    listItem.classList.toggle("task-section__edit-mode");
 };
 
 
@@ -164,12 +174,6 @@ addButton.addEventListener("click",ajaxRequest);
 
 var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
     console.log("bind list item events");
-    // if (taskListItem.parentNode.contains(completedTasksHolder)) {
-    //     taskListItem.querySelector(".task-section__label").className = "task-section__label completed";
-    //     taskListItem.querySelector(".task-section__label_disabled").className = "task-section__label_disabled completed";
-    //     taskListItem.querySelector(".task-section__text").className = "task-section__text completed";
-    //     taskListItem.querySelector(".task-section__text_disabled").className = "task-section__text_disabled completed";
-    // }
 //select ListItems children
     var checkBox=taskListItem.querySelector(".task-section__input-checkbox");
     var editButton=taskListItem.querySelector(".edit");
@@ -183,7 +187,27 @@ var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
     deleteButton.onclick=deleteTask;
     //Bind taskCompleted to checkBoxEventHandler.
     checkBox.onchange=checkBoxEventHandler;
-    console.log(1);
+    if (taskListItem.parentNode.contains(completedTasksHolder)) {
+        if (taskListItem.querySelector(".task-section__label")) {
+            taskListItem.querySelector(".task-section__label").classList.add("task-section_completed");
+        } else if (taskListItem.querySelector(".task-section__label_disabled")) {
+            taskListItem.querySelector(".task-section__label_disabled").classList.add("task-section_completed");
+        } else if (taskListItem.querySelector(".task-section__text")) {
+            taskListItem.querySelector(".task-section__text").classList.add("task-section_completed");
+        } else if (taskListItem.querySelector(".task-section__text_disabled")) {
+            taskListItem.querySelector(".task-section__text_disabled").classList.add("task-section_completed");
+        }
+    } else {
+        if (taskListItem.querySelector(".task-section__label")) {
+            taskListItem.querySelector(".task-section__label").classList.remove("task-section_completed");
+        } else if (taskListItem.querySelector(".task-section__label_disabled")) {
+            taskListItem.querySelector(".task-section__label_disabled").classList.remove("task-section_completed");
+        } else if (taskListItem.querySelector(".task-section__text")) {
+            taskListItem.querySelector(".task-section__text").classList.remove("task-section_completed");
+        } else if (taskListItem.querySelector(".task-section__text_disabled")) {
+            taskListItem.querySelector(".task-section__text_disabled").classList.remove("task-section_completed");
+        }
+    }
 }
 
 //cycle over incompleteTaskHolder ul list items
